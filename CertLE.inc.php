@@ -219,6 +219,16 @@ class CertLE extends LE {
 				echo '        Saved CSR to: '.$opts['csr']."\n";
 			}
 		}
+		
+		echo "\n";
+		
+		$info=openssl_x509_parse(openssl_x509_read($cert),true);
+		echo '  commonName: '.$info['subject']['CN']."\n";
+		echo '      issuer: '.$info['issuer']['CN']."\n";
+		echo 'serialNumber: '.$info['serialNumber']."\n";
+		echo '   validFrom: '.date('r',$info['validFrom_time_t'])."\n";
+		echo '     validTo: '.date('r',$info['validTo_time_t'])."\n";	
+				
 	}
 	
 	public function revoke($fn_cert){
