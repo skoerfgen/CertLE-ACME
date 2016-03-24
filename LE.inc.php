@@ -296,6 +296,9 @@ class LE {
 			'req_extensions'=>'SAN',
 			'digest_alg'=>'sha512'
 		));
+
+		unlink($fn);
+		openssl_pkey_free($domain_key);
 		
 		if (!$csr) {
 			throw new Exception(
@@ -303,9 +306,6 @@ class LE {
 				openssl_error_string()
 			);
 		}
-		
-		unlink($fn);
-		openssl_pkey_free($domain_key);
 		
 		if (false===openssl_csr_export($csr,$out)){
 			throw new Exception(
