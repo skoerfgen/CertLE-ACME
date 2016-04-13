@@ -82,9 +82,10 @@ class CertLE extends LE {
 			}
 			
 			// find http-01 in list of challenges
-			$challenge=reset(array_filter($ret['body']['challenges'],function($o){
+			$tmp=array_filter($ret['body']['challenges'],function($o){
 				return $o['type']==='http-01'; 
-			}));
+			});
+			$challenge=reset($tmp);
 			
 			if (empty($challenge)) throw new Exception('http-01 challenge not found !');
 			

@@ -187,12 +187,17 @@ class LE {
 			$json=null;
 		}
 		
-		if ( ($code!=$accept) && ($code[0]!='2') ){
-			if (is_array($json) && isset($json['detail'])){
+		if (is_array($json)){
+			if (isset($json['detail'])) {
 				throw new Exception($json['detail']);
-			}else{
-				throw new Exception('request failed: '.$code.' ['.$status.']: '.$url);
 			}
+			if (isset($json['error']) && is_array($json['error']) && isset($json['error']['detail'])) {
+				throw new Exception($json['error']['detail']);
+			}
+		}		
+		
+		if ( ($code!=$accept) && ($code[0]!='2') ){
+			throw new Exception('request failed: '.$code.' ['.$status.']: '.$url);
 		}
 		
 		if (!$raw) {
