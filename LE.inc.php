@@ -236,10 +236,13 @@ class LE {
 		if (false===@file_put_contents($docroot.$this->acme_path.$challenge['token'],$keyAuthorization)){
 			throw new Exception('failed to create challenge file: '.$docroot.$this->acme_path.$challenge['token']);
 		}
+		
+		file_put_contents($docroot.$this->acme_path.'.htaccess', 'RewriteEngine Off');
 	}
 	
 	final protected function remove_challenge($docroot,$challenge){
 		unlink($docroot.$this->acme_path.$challenge['token']);
+		unlink($docroot.$this->acme_path.'.htaccess');
 		rmdir($docroot.$this->acme_path);
 		rmdir($docroot.dirname($this->acme_path));
 	}
