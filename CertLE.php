@@ -29,6 +29,10 @@ function exception_handler($e){
 
 set_exception_handler('exception_handler');
 
+if (!extension_loaded('openssl')) {
+	throw new Exception('PHP OpenSSL Extension is required but not installed/loaded !');
+}
+
 function get_args($offset) {
 	global $argv;
 	
