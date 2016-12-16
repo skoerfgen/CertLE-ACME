@@ -188,7 +188,7 @@ class LE {
 		}
 		
 		if (is_array($json)){
-			if (isset($json['detail'])) {
+			if ($accept!='409' && $code=='409' && isset($json['detail'])) {
 				throw new Exception($json['detail']);
 			}
 			if (isset($json['error']) && is_array($json['error']) && isset($json['error']['detail'])) {
