@@ -167,6 +167,17 @@ if (isset($argv[1])){
 			$certLE=new CertLE($argv[2]);
 			$certLE->revoke($argv[3]);
 		break;
+		case 'deactivate':
+			if (!isset($argv[2])){
+				throw new Exception('Account-Key expected !');
+			}
+			if (!isset($argv[3])){
+				throw new Exception('Account-ID (URL) expected !');
+			}
+
+			$certLE=new CertLE($argv[2]);
+			$certLE->deactivate($argv[3]);
+		break;
 		default:
 			throw new Exception('Unknown subcommand: '.$argv[1]);
 		break;
@@ -207,6 +218,11 @@ SUBCOMMANDS: (All keys are in PEM-Format)
   revoke <key> <cert>                        Revoke Certificate
      <key>          Acount-Key or Domain-Key
      <cert>         cert or fullchain
+
+  deactivate <account_key> <account_id>      Deactivate Account
+     <account_key>  Account-Key
+     <account_id>   Account ID (URL)
+                    this URL is displayed when running the 'register' subcommand
 
 
 EOD;

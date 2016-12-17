@@ -42,17 +42,13 @@ class CertLE extends LE {
 			break;
 		}
 		
-		echo 'Account ID: '.$ret['body']['id']."\n";
+		echo 'Account ID: '.$reg."\n";
 		echo 'Created at: '.$ret['body']['createdAt']."\n";
-		
-		if (empty($ret['body']['contact'])){
-			echo 'Contact: NOT SET !'."\n";
-		}else{
-			echo 'Contact: '.implode(', ',$ret['body']['contact'])."\n";
-		}
+		echo '    Status: '.$ret['body']['Status']."\n";
+		echo '    E-Mail: '.(empty($ret['body']['contact'])?'NOT SET !':implode(', ',$ret['body']['contact']))."\n";
 		
 		if ( !isset($ret['body']['agreement']) ){
-			echo 'Terms of Service: '."\n\t".$ret['headers']['link']['terms-of-service']."\n";
+			echo '=== Terms of Service ==='."\n".$ret['headers']['link']['terms-of-service']."\n";
 			if ($auto || ('y'==strtolower(readline('Agree? [y/N] ')))){
 				echo 'Updating Agreement..';
 				$data['agreement']=$ret['headers']['link']['terms-of-service'];
@@ -253,6 +249,15 @@ class CertLE extends LE {
 		} else {
 			throw new Exception('unexpected http status code: '.$ret['code']);
 		}
+	}
+	
+	public function deactivate($reg){
+		$ret=$this->request('reg',array('status'=>'deactivated'),$reg);
+		if ($ret['code']==200) {
+			echo 'Account deactivated !'."\n";
+		} else {
+			throw new Exception('unexpected http status code: '.$ret['code']);
+		}		
 	}
 	
 	private function simulate_challenges($domains){

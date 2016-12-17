@@ -34,6 +34,11 @@ A Let's Encrypt PHP Command Line ACME Client
 				 <key>          Acount-Key or Domain-Key
 				 <cert>         cert or fullchain
 
+			deactivate <account_key> <account_id>      Deactivate Account
+				 <account_key>  Account-Key
+				 <account_id>   Account ID (URL)
+				                this URL is displayed when running the 'register' subcommand
+
 ### Examples
 
 ###### Generate an Account-Key in PEM-Format:
