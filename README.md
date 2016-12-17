@@ -64,6 +64,10 @@ A Let's Encrypt PHP Command Line ACME Client
 
     ./certle revoke account_key.pem cert.pem
 
+###### Deactivate Account
+
+    ./certle deactivate account_key.pem https://acme-v01.api.letsencrypt.org/acme/reg/xxxxx
+
 
 
 > CertLE - A Let's Encrypt PHP Command Line ACME Client
