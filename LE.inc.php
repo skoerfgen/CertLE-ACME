@@ -275,7 +275,7 @@ class LE {
 			);
 		}
 				
-		if (false===($fn=tempnam("/tmp", "CNF_"))){
+		if (false===($fn=tempnam(sys_get_temp_dir(), "CNF_"))){
 			throw new Exception('Failed to create temp file !');
 		}
 
