@@ -237,7 +237,7 @@ class LE {
 			throw new Exception('failed to create challenge file: '.$docroot.$this->acme_path.$challenge['token']);
 		}
 		
-		file_put_contents($docroot.$this->acme_path.'.htaccess', 'RewriteEngine Off'.PHP_EOL.'Allow from all'.PHP_EOL);
+		file_put_contents($docroot.$this->acme_path.'.htaccess', 'RewriteEngine Off');
 	}
 	
 	final protected function remove_challenge($docroot,$challenge){
