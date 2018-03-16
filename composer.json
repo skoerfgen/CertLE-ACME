@@ -10,7 +10,7 @@
             "CertLE\\": "src/"
         }
     },
-    "bin": ["cerle"],
+    "bin": ["certle"],
     "require": {
         "ext-openssl" : "*"
     }
