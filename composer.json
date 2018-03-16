@@ -1,0 +1,17 @@
+{
+    "name": "skoerfgen/certle",
+    "description": "A Let's Encrypt PHP Command Line ACME Client",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "minimum-stability": "stable",
+    "keywords": ["dyn","sdk","dns","dynect","email"],
+    "autoload": {
+        "psr-4": {
+            "CertLE\\": "src/"
+        }
+    },
+    "bin": ["cerle"],
+    "require": {
+        "ext-openssl" : "*"
+    }
+}
