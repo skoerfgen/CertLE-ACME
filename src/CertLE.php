@@ -17,7 +17,8 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-require('LE.inc.php');
+namespace CertLE;
+
 
 class CertLE extends LE {
 

@@ -1,2 +1,10 @@
-#!/bin/sh
-/usr/bin/env php CertLE.php "$@"
+#!/usr/bin/env php
+<?php
+// for phar
+if (file_exists(__DIR__.'/vendor/autoload.php')) {
+    require_once(__DIR__.'/vendor/autoload.php');
+} elseif (file_exists(__DIR__.'/../../autoload.php')) {
+    require_once __DIR__ . '/../../autoload.php';
+}
+
+\CertLE\Cli::run($argv);
