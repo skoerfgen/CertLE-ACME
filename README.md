@@ -49,6 +49,10 @@ A Let's Encrypt PHP Command Line ACME Client
 
     ./certle register account_key.pem contact@example.com
 
+###### Generate an Domain-Key in PEM-Format:
+
+    ./certle genrsa 4096 > domain_key.pem
+
 ###### Get Certificate / Renew Certificate
 
     ./certle cert account_key.pem domain_key.pem \
