@@ -76,7 +76,7 @@ if (isset($argv[1])){
 			);
 
 			$key=openssl_pkey_new($config);
-			openssl_pkey_export($key,$pem);
+			openssl_pkey_export($key,$pem,null,$config);
 			unlink($fn);
 			echo $pem;		
 		break;
