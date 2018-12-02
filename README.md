@@ -44,6 +44,7 @@ A Let's Encrypt PHP Command Line ACME Client
 ###### Generate an Account-Key (or Domain-Key) in PEM-Format:
 
     ./certle genrsa 4096 > account_key.pem
+> Equivalent to: `openssl genrsa 4096 -out account_key.pem`    
     
 ###### Register Account-Key with Let's Encrypt ACME-Server
 
