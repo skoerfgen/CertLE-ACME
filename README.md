@@ -41,17 +41,13 @@ A Let's Encrypt PHP Command Line ACME Client
 
 ### Examples
 
-###### Generate an Account-Key in PEM-Format:
+###### Generate an Account-Key/Domain-Key in PEM-Format:
 
     ./certle genrsa 4096 > account_key.pem
     
 ###### Register Account-Key with Let's Encrypt ACME-Server
 
     ./certle register account_key.pem contact@example.com
-
-###### Generate an Domain-Key in PEM-Format:
-
-    ./certle genrsa 4096 > domain_key.pem
 
 ###### Get Certificate / Renew Certificate
 
