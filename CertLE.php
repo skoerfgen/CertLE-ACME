@@ -76,7 +76,13 @@ if (isset($argv[1])){
 			);
 
 			$key=openssl_pkey_new($config);
-			openssl_pkey_export($key,$pem,null,$config);
+			if ($key===false) {
+				throw new Exception('Could not generate key');
+			}
+			
+			if (false===openssl_pkey_export($key,$pem,null,$config)){
+				throw new Exception('Could not export key');
+			}
 			unlink($fn);
 			echo $pem;		
 		break;
