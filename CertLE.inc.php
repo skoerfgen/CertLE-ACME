@@ -44,7 +44,7 @@ class CertLE extends LE {
 		
 		echo 'Account ID: '.$reg."\n";
 		echo 'Created at: '.$ret['body']['createdAt']."\n";
-		echo '    Status: '.$ret['body']['Status']."\n";
+		echo '    Status: '.$ret['body']['status']."\n";
 		echo '    E-Mail: '.(empty($ret['body']['contact'])?'NOT SET !':implode(', ',$ret['body']['contact']))."\n";
 		
 		if ( !isset($ret['body']['agreement']) ){
