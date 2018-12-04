@@ -153,23 +153,27 @@ class LE {
 		if ($body===false){
 			throw new Exception('request error: '.$url);
 		}
-		
-		list(,$code,$status)=explode(' ',reset($http_response_header),3);
 
 		$headers=array_reduce( // parse http headers into array
-			array_slice($http_response_header,1),
-			function($carry,$item){
-				list($k,$v)=explode(':',$item,2);
-				
-				$k=strtolower(trim($k));
-				$v=trim($v);
-				
-				if ($k==='link'){ // parse Link Headers
-					if (preg_match("/<(.*)>\\s*;\\s*rel=\"(.*)\"/",$v,$matches)){
-						$carry['link'][$matches[2]]=$matches[1];
-					}
+			$http_response_header,
+			function($carry,$item)use(&$code,&$status){
+				$parts=explode(':',$item,2);
+				if (count($parts)===1){
+					list(,$code,$status)=explode(' ',$item,3);
+					$carry=array();
 				}else{
-					$carry[$k]=$v;
+					list($k,$v)=$parts;
+					
+					$k=strtolower(trim($k));
+					$v=trim($v);
+					
+					if ($k==='link'){ // parse Link Headers
+						if (preg_match("/<(.*)>\\s*;\\s*rel=\"(.*)\"/",$v,$matches)){
+							$carry['link'][$matches[2]]=$matches[1];
+						}
+					}else{
+						$carry[$k]=$v;
+					}
 				}
 				
 				return $carry;
