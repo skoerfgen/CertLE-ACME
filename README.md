@@ -1,5 +1,9 @@
 # CertLE
-A Let's Encrypt PHP Command Line ACME Client
+A Let's Encrypt PHP Command Line (ACME v1) Client
+
+
+> *Update: See [ACMECert - PHP client library for Let's Encrypt (ACME v2)](https://github.com/skoerfgen/ACMECert) if you are looking for wildcard certificates.*
+
 
 ### Usage
 
