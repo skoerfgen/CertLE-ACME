@@ -1,8 +1,10 @@
 # CertLE
 A Let's Encrypt PHP Command Line (ACME v1) Client
+> **!!** **Discontinued** -> https://community.letsencrypt.org/t/end-of-life-plan-for-acmev1/88430 **!!**
+>
+> **Update**: If you are looking for an ACME v2 compatible client library, see: [ACMECert - PHP client library for Let's Encrypt (ACME v2)](https://github.com/skoerfgen/ACMECert) it also supports wildcard certificates.
 
 
-> *Update: See [ACMECert - PHP client library for Let's Encrypt (ACME v2)](https://github.com/skoerfgen/ACMECert) if you are looking for wildcard certificates.*
 
 
 ### Usage
